@@ -1,0 +1,214 @@
+# Memory budget ~5 GB for the MOCK stack on a 16 GB Windows host
+# with the WSL2 VM capped at ~6 GB. Recommended %UserProfile%\.wslconfig:
+#
+#   [wsl2]
+#   memory=6GB
+#   processors=6
+#
+# Allocations: neo4j 2g (heap max 1g + pagecache 256m), postgres 512m,
+# minio 256m, api 512m, worker 512m, worker-tierc 256m, web 256m,
+# mock-market 128m. Leave headroom for Docker itself.
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: attrib
+      POSTGRES_PASSWORD: attrib
+      POSTGRES_DB: attrib
+    ports:
+      - "${POSTGRES_PUBLISH_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    mem_limit: 512m
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U attrib -d attrib"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
+
+  neo4j:
+    image: neo4j:5-community
+    environment:
+      NEO4J_AUTH: neo4j/attribdevpassword
+      NEO4J_PLUGINS: "[]"
+      NEO4J_server_memory_heap_initial__size: 512m
+      NEO4J_server_memory_heap_max__size: 1g
+      NEO4J_server_memory_pagecache_size: 256m
+    ports:
+      - "${NEO4J_HTTP_PORT:-7474}:7474"
+      - "${NEO4J_BOLT_PORT:-7687}:7687"
+    volumes:
+      - neo4j_data:/data
+    mem_limit: 2g
+    healthcheck:
+      test: ["CMD-SHELL", "cypher-shell -u neo4j -p attribdevpassword 'RETURN 1'"]
+      interval: 10s
+      timeout: 15s
+      retries: 30
+      start_period: 180s
+
+  minio:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.minio
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: attrib
+      MINIO_ROOT_PASSWORD: attribsecret
+    ports:
+      - "${MINIO_API_PORT:-9000}:9000"
+      - "${MINIO_CONSOLE_PORT:-9001}:9001"
+    volumes:
+      - minio_data:/data
+    mem_limit: 256m
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 15s
+
+  mock-market:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.mock-market
+    ports:
+      - "${MOCK_MARKET_PORT:-8088}:80"
+    mem_limit: 128m
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost/"]
+      interval: 5s
+      timeout: 5s
+      retries: 8
+      start_period: 5s
+
+  api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.python
+    command: uvicorn attrib.api.main:app --host 0.0.0.0 --port 8000
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DSN: postgresql+psycopg://attrib:attrib@postgres:5432/attrib
+      NEO4J_URI: bolt://neo4j:7687
+      MINIO_ENDPOINT: minio:9000
+      MOCK_MARKET_BASE_URL: http://mock-market:80
+    ports:
+      - "${API_PUBLISH_PORT:-8000}:8000"
+    mem_limit: 512m
+    depends_on:
+      postgres:
+        condition: service_healthy
+      neo4j:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+      mock-market:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 8
+      start_period: 20s
+
+  worker:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.python
+    command: python -m attrib.cli worker
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DSN: postgresql+psycopg://attrib:attrib@postgres:5432/attrib
+      NEO4J_URI: bolt://neo4j:7687
+      MINIO_ENDPOINT: minio:9000
+      MOCK_MARKET_BASE_URL: http://mock-market:80
+      WORKER_ROLE: default
+    mem_limit: 512m
+    depends_on:
+      postgres:
+        condition: service_healthy
+      neo4j:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+    networks:
+      - default
+      - collector_net
+    healthcheck:
+      test: ["CMD", "python", "-c", "import attrib"]
+      interval: 15s
+      timeout: 5s
+      retries: 8
+      start_period: 15s
+
+  worker-tierc:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.python
+    command: python -m attrib.cli worker
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DSN: postgresql+psycopg://attrib:attrib@postgres:5432/attrib
+      NEO4J_URI: bolt://neo4j:7687
+      MINIO_ENDPOINT: minio:9000
+      WORKER_ROLE: tierc
+      ENABLE_PLAYWRIGHT_COLLECTOR: "0"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    mem_limit: 256m
+    cpus: 0.50
+    healthcheck:
+      test: ["CMD", "python", "-c", "import attrib, os; assert os.environ.get('WORKER_ROLE')=='tierc'; assert os.environ.get('ENABLE_PLAYWRIGHT_COLLECTOR','0')=='0'"]
+      interval: 15s
+      timeout: 5s
+      retries: 8
+      start_period: 15s
+
+  web:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.web
+    ports:
+      - "${WEB_PUBLISH_PORT:-5173}:5173"
+    environment:
+      VITE_API_BASE: http://localhost:8000
+    mem_limit: 256m
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:5173/"]
+      interval: 10s
+      timeout: 5s
+      retries: 8
+      start_period: 25s
+
+  tor:
+    image: dperson/torproxy
+    profiles: ["live"]
+    networks:
+      - collector_net
+    healthcheck:
+      test: ["CMD-SHELL", "true"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+networks:
+  default:
+  collector_net:
+    # LIVE collection egress only. DNS for fetches must use socks5h via tor.
+    internal: true
+    name: attrib_collector_net
+
+volumes:
+  postgres_data:
+  neo4j_data:
+  minio_data:

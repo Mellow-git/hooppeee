@@ -1,0 +1,10 @@
+{
+  "name": "hopium",
+  "private": true,
+  "description": "Vercel entry for the SIH dashboard. The Vite app lives in /web.",
+  "scripts": {
+    "dev": "npm --prefix web run dev",
+    "build": "npm --prefix web run build",
+    "test": "npm --prefix web test"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "cluster_id": "CLU-0001",
+  "nodes": [
+    { "id": "n-act-0417", "label": "ShadowLedger", "type": "actor", "actor_id": "ACT-0417", "detail": "Hero actor · HIGH" },
+    { "id": "n-act-0233", "label": "NeonPharm", "type": "actor", "actor_id": "ACT-0233", "detail": "CONTESTED" },
+    { "id": "n-act-0102", "label": "ColdBrew", "type": "actor", "actor_id": "ACT-0102", "detail": "MODERATE" },
+    { "id": "n-act-0581", "label": "Vektor", "type": "actor", "actor_id": "ACT-0581", "detail": "EXPLORATORY" },
+    { "id": "n-act-0066", "label": "NimbusCart", "type": "actor", "actor_id": "ACT-0066", "detail": "Handle-only MODERATE" },
+    { "id": "n-h-shadow", "label": "shadowl3dger", "type": "identifier", "subtype": "handle", "actor_id": "ACT-0417" },
+    { "id": "n-h-dark", "label": "DarkMerchant", "type": "identifier", "subtype": "handle", "actor_id": "ACT-0417" },
+    { "id": "n-pgp-sl", "label": "PGP 4B6A…A0F3", "type": "identifier", "subtype": "pgp", "actor_id": "ACT-0417" },
+    { "id": "n-w-sl", "label": "WCL-4419", "type": "identifier", "subtype": "wallet", "actor_id": "ACT-0417" },
+    { "id": "n-h-neon", "label": "neonpharm", "type": "identifier", "subtype": "handle", "actor_id": "ACT-0233" },
+    { "id": "n-pgp-a", "label": "PGP AA11…DDEE", "type": "identifier", "subtype": "pgp", "actor_id": "ACT-0233" },
+    { "id": "n-pgp-b", "label": "PGP 1111…AAAA", "type": "identifier", "subtype": "pgp", "actor_id": "ACT-0233" },
+    { "id": "n-h-night", "label": "night0wl", "type": "identifier", "subtype": "handle", "detail": "Handle collision" },
+    { "id": "n-infra-sl", "label": "tls+asset 198.51.100.41", "type": "infra", "actor_id": "ACT-0417" },
+    { "id": "n-persona-dm", "label": "Persona DarkMerchant", "type": "persona", "actor_id": "ACT-0417" },
+    { "id": "n-persona-sl", "label": "Persona ShadowLedger", "type": "persona", "actor_id": "ACT-0417" },
+    {
+      "id": "n-svc-wallet",
+      "label": "Service wallet suspected (1,240 addresses), excluded from linking",
+      "type": "excluded_cluster",
+      "detail": "Flagged service_wallet_suspected. Not used as LINKED_TO evidence."
+    }
+  ],
+  "edges": [
+    { "id": "e1", "source": "n-act-0417", "target": "n-h-shadow", "kind": "LINKED_TO", "tier": 2, "dashed": true },
+    { "id": "e2", "source": "n-act-0417", "target": "n-h-dark", "kind": "LINKED_TO", "tier": 2, "dashed": true },
+    { "id": "e3", "source": "n-act-0417", "target": "n-pgp-sl", "kind": "LINKED_TO", "tier": 1, "dashed": true },
+    { "id": "e4", "source": "n-act-0417", "target": "n-w-sl", "kind": "LINKED_TO", "tier": 2, "dashed": true },
+    { "id": "e5", "source": "n-act-0417", "target": "n-infra-sl", "kind": "LINKED_TO", "tier": 1, "dashed": true },
+    { "id": "e6", "source": "n-persona-dm", "target": "n-persona-sl", "kind": "LINKED_TO", "tier": 1, "dashed": true },
+    { "id": "e7", "source": "n-act-0417", "target": "n-persona-sl", "kind": "LINKED_TO", "tier": 1, "dashed": true },
+    { "id": "e8", "source": "n-act-0233", "target": "n-h-neon", "kind": "LINKED_TO", "tier": 2, "dashed": true },
+    { "id": "e9", "source": "n-act-0233", "target": "n-pgp-a", "kind": "LINKED_TO", "tier": 2, "dashed": true },
+    { "id": "e10", "source": "n-act-0233", "target": "n-pgp-b", "kind": "LINKED_TO", "tier": 2, "dashed": true },
+    { "id": "e11", "source": "n-act-0102", "target": "n-h-night", "kind": "LINKED_TO", "tier": 2, "dashed": true },
+    { "id": "e12", "source": "n-act-0066", "target": "n-h-night", "kind": "LINKED_TO", "tier": 2, "dashed": true },
+    { "id": "e13", "source": "n-w-sl", "target": "n-svc-wallet", "kind": "LINKED_TO", "tier": 3, "dashed": true }
+  ]
+}

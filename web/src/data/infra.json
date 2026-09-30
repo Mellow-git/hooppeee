@@ -1,0 +1,67 @@
+{
+  "comparisons": 18420,
+  "fingerprint_matches": 312,
+  "discarded_template_common": 27,
+  "discarded_excluded_asn": 112,
+  "single_class_logged_only": 41,
+  "multi_signal_confirmed": 3,
+  "funnel": {
+    "fingerprint_matches": 312,
+    "after_prevalence_cutoff": 285,
+    "after_asn_exclusion": 173,
+    "two_plus_classes": 132,
+    "confirmed": 3
+  },
+  "candidates": [
+    {
+      "onion": "shadowl3dgerdemoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.onion",
+      "candidate_ip": "198.51.100.41",
+      "classes_matched": ["tls", "custom_asset"],
+      "gate_status": "confirmed",
+      "reason": "Two independent classes; prevalence below cutoff; ASN not excluded"
+    },
+    {
+      "onion": "neonpharmdemobbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.onion",
+      "candidate_ip": "203.0.113.18",
+      "classes_matched": ["tls"],
+      "gate_status": "logged_only",
+      "reason": "Single independence class (tls only)"
+    },
+    {
+      "onion": "cdndecoyshopcccccccccccccccccccccccccccccccccccc.onion",
+      "candidate_ip": "203.0.113.90",
+      "classes_matched": ["favicon", "banner"],
+      "gate_status": "rejected",
+      "reason": "CDN decoy: shared template, same underlying cause"
+    },
+    {
+      "onion": "templatedefaultddddddddddddddddddddddddddddddddd.onion",
+      "candidate_ip": "192.0.2.77",
+      "classes_matched": ["cert", "paths"],
+      "gate_status": "rejected",
+      "reason": "Discarded template_common (prevalence cutoff)"
+    },
+    {
+      "onion": "exchangenodeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee.onion",
+      "candidate_ip": "192.0.2.14",
+      "classes_matched": ["tls", "banner"],
+      "gate_status": "rejected",
+      "reason": "Discarded excluded ASN"
+    }
+  ],
+  "exclusion_list": {
+    "last_refreshed": "2026-09-27T00:00:00Z",
+    "stale_sample_last_refreshed": "2026-08-01T00:00:00Z",
+    "entries": ["AS13335", "AS16509", "AS20940", "template:default-market-v3"]
+  },
+  "false_lead_rate": null,
+  "coinjoin_excluded": {
+    "txid": "f4e2c1a09876543210fedcba9876543210abcdef0123456789abcdef01234567",
+    "note": "CoinJoin-like transaction excluded from clustering (D6)."
+  },
+  "service_wallet_cluster": {
+    "size": 1240,
+    "flag": "service_wallet_suspected",
+    "note": "Excluded from linking."
+  }
+}

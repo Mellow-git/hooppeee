@@ -1,0 +1,9 @@
+[
+  { "at": "2026-09-30T13:55:00Z", "text": "Paste Watch scan completed · hash chain verified" },
+  { "at": "2026-09-30T12:10:00Z", "text": "Forum Alpha ingested 14 public posts" },
+  { "at": "2026-09-22T18:00:00Z", "text": "ACT-0417 ShadowLedger last activity observed" },
+  { "at": "2026-09-21T09:44:00Z", "text": "Behaviour clock overlap recorded for DarkMerchant / ShadowLedger" },
+  { "at": "2026-09-18T11:02:00Z", "text": "Infra multi-signal confirmed for ShadowLedger onion" },
+  { "at": "2026-09-14T07:55:00Z", "text": "ACT-0233 NeonPharm PGP conflict logged (contradicting)" },
+  { "at": "2026-09-08T21:10:00Z", "text": "ACT-0581 Vektor stylometry row added (exploratory)" }
+]

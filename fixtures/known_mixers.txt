@@ -1,0 +1,2 @@
+# Synthetic mixer addresses for MOCK clustering tests. Not real-world targets.
+tb1qmixerfixture0000000000000000000000

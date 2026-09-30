@@ -1,0 +1,345 @@
+[
+  {
+    "id": "ACT-0417",
+    "display_name": "ShadowLedger",
+    "handles": ["shadowl3dger", "DarkMerchant"],
+    "category": "Marketplace operator (synthetic)",
+    "first_seen": "2023-08-02",
+    "last_activity": "2026-09-22",
+    "identifiers": [
+      { "kind": "handle", "value": "shadowl3dger", "reliability": "moderate" },
+      { "kind": "handle", "value": "DarkMerchant", "note": "Earlier persona on a different market", "reliability": "moderate" },
+      { "kind": "pgp", "value": "4B6A 91C2 0E77 3D18 8AF1  2C90 6E44 1B7D 9C21 A0F3", "reliability": "high" },
+      { "kind": "onion", "value": "shadowl3dgerdemoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.onion" },
+      { "kind": "wallet", "value": "bc1qsl7dgerdemo0000000000000000000000h0p1um" }
+    ],
+    "persona_linkage": [
+      {
+        "from_persona": "DarkMerchant",
+        "to_persona": "ShadowLedger",
+        "result": "linked",
+        "basis": "Shared PGP fingerprint plus multi-signal infrastructure confirmation (tls + custom_asset)."
+      }
+    ],
+    "notes": [
+      "Rebrand story: DarkMerchant vanished from Market-Kite in 2025; ShadowLedger appeared on Market-Quill with the same PGP."
+    ],
+    "ledger": [
+      {
+        "entry_id": "LED-0417-01",
+        "evidence_type": "infra_multi_signal",
+        "tier": 1,
+        "polarity": "supporting",
+        "independence_class": "tls",
+        "source": { "id": "SRC-04", "name": "Onion Index", "reliability": "B" },
+        "error_rate_ref": { "kind": "local", "label": "infra_multi_signal", "precision": 0.91, "recall": 0.74 },
+        "raw_value": {
+          "gate": "multi_signal_confirmed",
+          "classes": ["tls", "custom_asset"],
+          "onion": "shadowl3dgerdemoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.onion",
+          "candidate_ip": "198.51.100.41"
+        },
+        "captured_at": "2026-09-18T11:02:00Z",
+        "record_id": "REC-18821",
+        "content_sha256": "1c8f0a6b2d4e90aa7712bb0c4d9e1f3a6c8d0e2f4a6b8c0d1e3f5a7b9c1d3e5f",
+        "chain_hash": "aa01bb23cc45dd67ee89ff01aa23bb45cc67dd89ee01ff23aa45bb67cc89dd01"
+      },
+      {
+        "entry_id": "LED-0417-02",
+        "evidence_type": "infra_multi_signal",
+        "tier": 1,
+        "polarity": "supporting",
+        "independence_class": "custom_asset",
+        "source": { "id": "SRC-04", "name": "Onion Index", "reliability": "B" },
+        "error_rate_ref": { "kind": "local", "label": "infra_multi_signal", "precision": 0.91, "recall": 0.74 },
+        "raw_value": {
+          "gate": "multi_signal_confirmed",
+          "asset_hash": "9aa1c3e5f708192a3b4c5d6e7f8091a2b3c4d5e6f708192a3b4c5d6e7f8091a2",
+          "prevalence": "below_cutoff"
+        },
+        "captured_at": "2026-09-18T11:02:00Z",
+        "record_id": "REC-18822",
+        "content_sha256": "2d9e1b7c3f5a80bb8823cc1d5e0f2a4b7d9e1f3a5c7d0e2f4a6b8c0d1e3f5a7b",
+        "chain_hash": "bb12cc34dd56ee78ff90aa12bb34cc56dd78ee90ff12aa34bb56cc78dd90ee12"
+      },
+      {
+        "entry_id": "LED-0417-03",
+        "evidence_type": "shared_pgp_fingerprint",
+        "tier": 1,
+        "polarity": "supporting",
+        "independence_class": "pgp",
+        "source": { "id": "SRC-01", "name": "Forum Alpha", "reliability": "A" },
+        "error_rate_ref": { "kind": "local", "label": "pgp_fingerprint", "precision": 0.99, "recall": 0.81 },
+        "raw_value": {
+          "fingerprint": "4B6A91C20E773D188AF12C906E441B7D9C21A0F3",
+          "personas": ["DarkMerchant", "ShadowLedger"]
+        },
+        "captured_at": "2026-09-12T08:40:00Z",
+        "record_id": "REC-17402",
+        "content_sha256": "3e0f2c8d4a6b91cc9934dd2e6f1a3b5c8e0f2a4b6d8e1f3a5c7d9e0f1a2b3c4d",
+        "chain_hash": "cc23dd45ee67ff8901aa23bb45cc67dd89ee01ff23aa45bb67cc89dd01ee23ff"
+      },
+      {
+        "entry_id": "LED-0417-04",
+        "evidence_type": "wallet_cluster",
+        "tier": 2,
+        "polarity": "supporting",
+        "independence_class": "wallet",
+        "source": { "id": "SRC-06", "name": "Chain Fixture", "reliability": "A" },
+        "error_rate_ref": {
+          "kind": "literature_prior",
+          "label": "wallet_cio",
+          "precision": 0.36,
+          "recall": 0.44,
+          "dataset_note": "Literature prior, different dataset, unverified PLACEHOLDER"
+        },
+        "raw_value": {
+          "cluster_id": "WCL-4419",
+          "addresses": 18,
+          "coinjoin_excluded": true,
+          "service_wallet_excluded": true
+        },
+        "captured_at": "2026-09-20T16:11:00Z",
+        "record_id": "REC-19004",
+        "content_sha256": "4f1a3d9e5b7c02dd0045ee3f7a2b4c6d9f1a3b5c7e9f0a2b4c6d8e0f1a3b5c7d",
+        "chain_hash": "dd34ee56ff7801aa23bb45cc67dd89ee01ff23aa45bb67cc89dd01ee23ff45aa"
+      },
+      {
+        "entry_id": "LED-0417-05",
+        "evidence_type": "stylometry",
+        "tier": 3,
+        "polarity": "supporting",
+        "independence_class": "stylometry",
+        "source": { "id": "SRC-07", "name": "Style Corpus", "reliability": "B" },
+        "error_rate_ref": { "kind": "local", "label": "stylometry_rank", "precision": 0.62, "recall": 0.55 },
+        "raw_value": {
+          "rank": 1,
+          "margin_to_runner_up": 0.08,
+          "reference_set_size": 37
+        },
+        "captured_at": "2026-09-21T09:30:00Z",
+        "record_id": "REC-19110",
+        "content_sha256": "5a2b4e0f6c8d13ee1156ff4a8b3c5d7e0a2b4c6d8f0a1b3c5d7e9f1a2b4c6d8e",
+        "chain_hash": "ee45ff6701aa23bb45cc67dd89ee01ff23aa45bb67cc89dd01ee23ff45aa67bb"
+      },
+      {
+        "entry_id": "LED-0417-06",
+        "evidence_type": "posting_time_similarity",
+        "tier": 3,
+        "polarity": "supporting",
+        "independence_class": "behaviour",
+        "source": { "id": "SRC-01", "name": "Forum Alpha", "reliability": "A" },
+        "error_rate_ref": { "kind": "local", "label": "behaviour_clock", "precision": 0.58, "recall": 0.49 },
+        "raw_value": {
+          "window": "UTC evening peak",
+          "overlap_hours": 5,
+          "personas": ["DarkMerchant", "ShadowLedger"]
+        },
+        "captured_at": "2026-09-21T09:44:00Z",
+        "record_id": "REC-19118",
+        "content_sha256": "6b3c5f1a7d9e24ff2267015b9c4d6e8f1b3c5d7e9a1b2c4d6e8f0a2b3c5d7e9f",
+        "chain_hash": "ff5601aa23bb45cc67dd89ee01ff23aa45bb67cc89dd01ee23ff45aa67bb89cc"
+      }
+    ]
+  },
+  {
+    "id": "ACT-0233",
+    "display_name": "NeonPharm",
+    "handles": ["neonpharm"],
+    "category": "Vendor (synthetic)",
+    "first_seen": "2024-11-09",
+    "last_activity": "2026-09-14",
+    "identifiers": [
+      { "kind": "handle", "value": "neonpharm", "reliability": "moderate" },
+      { "kind": "pgp", "value": "AA11 BB22 CC33 DD44 EE55  FF66 7788 99AA BBCC DDEE", "note": "Fingerprint A" },
+      { "kind": "pgp", "value": "1111 2222 3333 4444 5555  6666 7777 8888 9999 AAAA", "note": "Fingerprint B (same source, same handle)" },
+      { "kind": "wallet", "value": "bc1qneonpharmdemo000000000000000000000xyz" }
+    ],
+    "persona_linkage": [],
+    "notes": [
+      "Same handle presented two different PGP fingerprints on Forum Alpha."
+    ],
+    "ledger": [
+      {
+        "entry_id": "LED-0233-01",
+        "evidence_type": "wallet_cluster",
+        "tier": 2,
+        "polarity": "supporting",
+        "independence_class": "wallet",
+        "source": { "id": "SRC-06", "name": "Chain Fixture", "reliability": "A" },
+        "error_rate_ref": {
+          "kind": "literature_prior",
+          "label": "wallet_cio",
+          "precision": 0.36,
+          "recall": 0.44,
+          "dataset_note": "Literature prior, different dataset, unverified PLACEHOLDER"
+        },
+        "raw_value": { "cluster_id": "WCL-2201", "addresses": 7 },
+        "captured_at": "2026-09-10T13:20:00Z",
+        "record_id": "REC-16601",
+        "content_sha256": "7c4d6a2b8e0f35003378026c0d5e7f9a2c4d6e8f0b2c3d5e7f9a1b3c4d6e8f0a",
+        "chain_hash": "0156aa23bb45cc67dd89ee01ff23aa45bb67cc89dd01ee23ff45aa67bb89ccdd"
+      },
+      {
+        "entry_id": "LED-0233-02",
+        "evidence_type": "stylometry",
+        "tier": 3,
+        "polarity": "supporting",
+        "independence_class": "stylometry",
+        "source": { "id": "SRC-07", "name": "Style Corpus", "reliability": "B" },
+        "error_rate_ref": { "kind": "local", "label": "stylometry_rank", "precision": 0.62, "recall": 0.55 },
+        "raw_value": { "rank": 4, "margin_to_runner_up": 0.02, "reference_set_size": 37 },
+        "captured_at": "2026-09-11T10:05:00Z",
+        "record_id": "REC-16688",
+        "content_sha256": "8d5e7b3c9f1a46114489137d1e6f8a0b3d5e7f9a1c3d4e6f8a0b2c4d5e7f9a1b",
+        "chain_hash": "1267bb34cc56dd78ee90ff12aa34bb56cc78dd90ee12ff34aa56bb78cc90ddee"
+      },
+      {
+        "entry_id": "LED-0233-03",
+        "evidence_type": "pgp_fingerprint_conflict",
+        "tier": 2,
+        "polarity": "contradicting",
+        "independence_class": "pgp",
+        "source": { "id": "SRC-01", "name": "Forum Alpha", "reliability": "A" },
+        "error_rate_ref": { "kind": "local", "label": "pgp_fingerprint", "precision": 0.99, "recall": 0.81 },
+        "raw_value": {
+          "handle": "neonpharm",
+          "fingerprint_a": "AA11BB22CC33DD44EE55FF66778899AABBCCDDEE",
+          "fingerprint_b": "111122223333444455556666777788889999AAAA",
+          "same_source": true
+        },
+        "captured_at": "2026-09-14T07:55:00Z",
+        "record_id": "REC-17002",
+        "content_sha256": "9e6f8c4d0a2b5722559a248e2f7a9b1c4e6f8a0b2d4e5f7a9b1c3d5e6f8a0b2c",
+        "chain_hash": "2378cc45dd67ee8901aa23bb45cc67dd89ee01ff23aa45bb67cc89dd01eeff00"
+      }
+    ]
+  },
+  {
+    "id": "ACT-0102",
+    "display_name": "ColdBrew",
+    "handles": ["night0wl", "coldbrew"],
+    "category": "Forum persona (synthetic)",
+    "first_seen": "2025-02-18",
+    "last_activity": "2026-08-29",
+    "identifiers": [
+      { "kind": "handle", "value": "night0wl", "note": "Handle collision with ACT-0066 NimbusCart (unrelated)", "reliability": "moderate" },
+      { "kind": "handle", "value": "coldbrew", "reliability": "moderate" },
+      { "kind": "wallet", "value": "bc1qcoldbrewdemo000000000000000000000aaa" }
+    ],
+    "persona_linkage": [],
+    "notes": [
+      "Handle-only matches stay moderate (D7). night0wl also appears on an unrelated actor."
+    ],
+    "ledger": [
+      {
+        "entry_id": "LED-0102-01",
+        "evidence_type": "wallet_cluster",
+        "tier": 2,
+        "polarity": "supporting",
+        "independence_class": "wallet",
+        "source": { "id": "SRC-06", "name": "Chain Fixture", "reliability": "A" },
+        "error_rate_ref": {
+          "kind": "literature_prior",
+          "label": "wallet_cio",
+          "precision": 0.36,
+          "recall": 0.44,
+          "dataset_note": "Literature prior, different dataset, unverified PLACEHOLDER"
+        },
+        "raw_value": { "cluster_id": "WCL-1102", "addresses": 4 },
+        "captured_at": "2026-08-20T12:00:00Z",
+        "record_id": "REC-14011",
+        "content_sha256": "0f7a9d5e1b3c683366ab359f3a8b0c2d5f7a9b1c3e5f6a8b0c2d4e6f7a9b1c3d",
+        "chain_hash": "3489dd56ee7801aa23bb45cc67dd89ee01ff23aa45bb67cc89dd01ee23ffaa11"
+      },
+      {
+        "entry_id": "LED-0102-02",
+        "evidence_type": "handle_match",
+        "tier": 2,
+        "polarity": "supporting",
+        "independence_class": "handle",
+        "source": { "id": "SRC-02", "name": "Market Mirror", "reliability": "B" },
+        "error_rate_ref": { "kind": "local", "label": "handle_collision", "precision": 0.41, "recall": 0.7 },
+        "raw_value": {
+          "handle": "night0wl",
+          "collision_with": "ACT-0066",
+          "reliability": "moderate"
+        },
+        "captured_at": "2026-08-29T18:22:00Z",
+        "record_id": "REC-14820",
+        "content_sha256": "1a8b0e6f2c4d794477bc460a4b9c1d3e6a8b0c2d4f6a7b9c1d3e5f7a8b0c2d4e",
+        "chain_hash": "459aee67ff8901bb34cc56dd78ee90ff12aa34bb56cc78dd90ee12ff45aabb22"
+      }
+    ]
+  },
+  {
+    "id": "ACT-0581",
+    "display_name": "Vektor",
+    "handles": ["vekt0r"],
+    "category": "Unknown (synthetic)",
+    "first_seen": "2026-01-04",
+    "last_activity": "2026-09-08",
+    "identifiers": [
+      { "kind": "handle", "value": "vekt0r", "note": "Contains confusable substitutions in some posts", "reliability": "moderate" }
+    ],
+    "persona_linkage": [
+      {
+        "from_persona": "vekt0r",
+        "to_persona": "unknown",
+        "result": "withheld",
+        "basis": "Not analysed (withheld)",
+        "obfuscation_indicators": ["zero-width characters", "confusable substitutions"]
+      }
+    ],
+    "notes": [
+      "Withheld means not analysed. No indicators detected does not mean authentic."
+    ],
+    "ledger": [
+      {
+        "entry_id": "LED-0581-01",
+        "evidence_type": "stylometry",
+        "tier": 3,
+        "polarity": "supporting",
+        "independence_class": "stylometry",
+        "source": { "id": "SRC-07", "name": "Style Corpus", "reliability": "B" },
+        "error_rate_ref": { "kind": "local", "label": "stylometry_rank", "precision": 0.62, "recall": 0.55 },
+        "raw_value": { "rank": 9, "margin_to_runner_up": 0.01, "reference_set_size": 37 },
+        "captured_at": "2026-09-08T21:10:00Z",
+        "record_id": "REC-15901",
+        "content_sha256": "2b9c1f7a3d5e805588cd571b5c0d2e4f7b9c1d3e5a7b8c0d2e4f6a8b9c1d3e5f",
+        "chain_hash": "56abff7801aa23cc45dd67ee89ff01aa23bb45cc67dd89ee01ff23aa45bbcc33"
+      }
+    ]
+  },
+  {
+    "id": "ACT-0066",
+    "display_name": "NimbusCart",
+    "handles": ["night0wl"],
+    "category": "Unrelated vendor (synthetic)",
+    "first_seen": "2024-06-01",
+    "last_activity": "2026-07-12",
+    "identifiers": [
+      { "kind": "handle", "value": "night0wl", "note": "Handle collision with ACT-0102 ColdBrew (unrelated)", "reliability": "moderate" }
+    ],
+    "persona_linkage": [],
+    "notes": [
+      "Shown as handle-only, moderate. No corroborating PGP, contact, or wallet."
+    ],
+    "ledger": [
+      {
+        "entry_id": "LED-0066-01",
+        "evidence_type": "handle_match",
+        "tier": 2,
+        "polarity": "supporting",
+        "independence_class": "handle",
+        "source": { "id": "SRC-08", "name": "Leak Board", "reliability": "C" },
+        "error_rate_ref": { "kind": "local", "label": "handle_collision", "precision": 0.41, "recall": 0.7 },
+        "raw_value": { "handle": "night0wl", "collision_with": "ACT-0102", "reliability": "moderate" },
+        "captured_at": "2026-07-12T04:18:00Z",
+        "record_id": "REC-12100",
+        "content_sha256": "3cad2a8b4e6f916699de682c6d1e3f5a8c0d2e4f6b8c9d1e3f5a7b9c0d2e4f6a",
+        "chain_hash": "67bc01aa23bb45dd67ee89ff01aa23bb45cc67dd89ee01ff23aa45bb67ccdd44"
+      }
+    ]
+  }
+]

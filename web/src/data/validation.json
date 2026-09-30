@@ -1,0 +1,20 @@
+{
+  "status": "illustrative_placeholder",
+  "seed": 7,
+  "methods": [
+    { "method": "infra_multi_signal", "precision": 0.91, "recall": 0.74, "n_cases": 48, "seed": 7 },
+    { "method": "wallet_clustering", "precision": 0.71, "recall": 0.63, "n_cases": 40, "seed": 7 },
+    { "method": "stylometry", "precision": 0.62, "recall": 0.55, "n_cases": 37, "seed": 7 },
+    { "method": "obfuscation_gate", "precision": 0.88, "recall": 0.81, "n_cases": 22, "seed": 7 }
+  ],
+  "scenarios": [
+    { "id": "sc-rebrand", "label": "Rebrands linked when PGP + infra agree", "result": "pass" },
+    { "id": "sc-obf", "label": "Obfuscated posts withheld (not analysed)", "result": "pass" },
+    { "id": "sc-cdn", "label": "CDN decoys rejected", "result": "pass" },
+    { "id": "sc-template", "label": "Template decoys rejected", "result": "pass" },
+    { "id": "sc-coinjoin", "label": "CoinJoin excluded from clustering", "result": "pass" },
+    { "id": "sc-service", "label": "Service wallet excluded from linking", "result": "pass" },
+    { "id": "sc-handle", "label": "Handle collisions kept moderate", "result": "pass" },
+    { "id": "sc-contest", "label": "Contradictions → contested", "result": "pass" }
+  ]
+}

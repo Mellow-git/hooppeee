@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  background: #f7f9fc;
+  color: #1f2937;
+}
+
+:focus-visible {
+  outline: 2px solid #1f4fbf;
+  outline-offset: 2px;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .print-disclosure {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-bottom: 2px solid #0b2a5b;
+    padding: 10px 16px;
+    font-size: 12px;
+    z-index: 9999;
+  }
+
+  .print-body {
+    padding-top: 72px;
+  }
+}

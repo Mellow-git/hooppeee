@@ -1,0 +1,7 @@
+FROM minio/minio:latest AS upstream
+
+FROM alpine:3.21
+RUN apk add --no-cache curl ca-certificates
+COPY --from=upstream /usr/bin/minio /usr/bin/minio
+RUN chmod +x /usr/bin/minio
+ENTRYPOINT ["/usr/bin/minio"]

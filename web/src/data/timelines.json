@@ -1,0 +1,30 @@
+{
+  "ACT-0417": [
+    { "id": "TL-417-01", "actor_id": "ACT-0417", "source_id": "SRC-02", "source_name": "Market Mirror", "kind": "handle_change", "at": "2023-08-02", "label": "Handle DarkMerchant registered" },
+    { "id": "TL-417-02", "actor_id": "ACT-0417", "source_id": "SRC-02", "source_name": "Market Mirror", "kind": "post", "at": "2024-01-15", "label": "Vendor terms posted" },
+    { "id": "TL-417-03", "actor_id": "ACT-0417", "source_id": "SRC-01", "source_name": "Forum Alpha", "kind": "post", "at": "2024-06-03", "label": "Support thread as DarkMerchant" },
+    { "id": "TL-417-04", "actor_id": "ACT-0417", "source_id": "SRC-06", "source_name": "Chain Fixture", "kind": "wallet", "at": "2025-03-11", "label": "Wallet cluster WCL-4419 first seen" },
+    { "id": "TL-417-05", "actor_id": "ACT-0417", "source_id": "SRC-02", "source_name": "Market Mirror", "kind": "rebrand", "at": "2025-11-02", "label": "DarkMerchant vanished (rebrand marker)" },
+    { "id": "TL-417-06", "actor_id": "ACT-0417", "source_id": "SRC-01", "source_name": "Forum Alpha", "kind": "handle_change", "at": "2025-11-18", "label": "Handle shadowl3dger appears" },
+    { "id": "TL-417-07", "actor_id": "ACT-0417", "source_id": "SRC-04", "source_name": "Onion Index", "kind": "post", "at": "2026-09-18", "label": "Onion confirmed multi-signal" }
+  ],
+  "ACT-0233": [
+    { "id": "TL-233-01", "actor_id": "ACT-0233", "source_id": "SRC-01", "source_name": "Forum Alpha", "kind": "handle_change", "at": "2024-11-09", "label": "Handle neonpharm" },
+    { "id": "TL-233-02", "actor_id": "ACT-0233", "source_id": "SRC-01", "source_name": "Forum Alpha", "kind": "post", "at": "2025-04-22", "label": "PGP fingerprint A advertised" },
+    { "id": "TL-233-03", "actor_id": "ACT-0233", "source_id": "SRC-06", "source_name": "Chain Fixture", "kind": "wallet", "at": "2026-02-01", "label": "Wallet cluster WCL-2201" },
+    { "id": "TL-233-04", "actor_id": "ACT-0233", "source_id": "SRC-01", "source_name": "Forum Alpha", "kind": "post", "at": "2026-09-14", "label": "PGP fingerprint B advertised (conflict)" }
+  ],
+  "ACT-0102": [
+    { "id": "TL-102-01", "actor_id": "ACT-0102", "source_id": "SRC-02", "source_name": "Market Mirror", "kind": "handle_change", "at": "2025-02-18", "label": "Handle night0wl" },
+    { "id": "TL-102-02", "actor_id": "ACT-0102", "source_id": "SRC-06", "source_name": "Chain Fixture", "kind": "wallet", "at": "2026-04-09", "label": "Wallet cluster WCL-1102" },
+    { "id": "TL-102-03", "actor_id": "ACT-0102", "source_id": "SRC-01", "source_name": "Forum Alpha", "kind": "post", "at": "2026-08-29", "label": "Handle coldbrew mentioned" }
+  ],
+  "ACT-0581": [
+    { "id": "TL-581-01", "actor_id": "ACT-0581", "source_id": "SRC-08", "source_name": "Leak Board", "kind": "post", "at": "2026-01-04", "label": "Obfuscated post (withheld from stylometry gate)" },
+    { "id": "TL-581-02", "actor_id": "ACT-0581", "source_id": "SRC-07", "source_name": "Style Corpus", "kind": "post", "at": "2026-09-08", "label": "Clean post used for rank-only stylometry" }
+  ],
+  "ACT-0066": [
+    { "id": "TL-066-01", "actor_id": "ACT-0066", "source_id": "SRC-08", "source_name": "Leak Board", "kind": "handle_change", "at": "2024-06-01", "label": "Handle night0wl (unrelated collision)" },
+    { "id": "TL-066-02", "actor_id": "ACT-0066", "source_id": "SRC-08", "source_name": "Leak Board", "kind": "post", "at": "2026-07-12", "label": "Vendor dump mention" }
+  ]
+}

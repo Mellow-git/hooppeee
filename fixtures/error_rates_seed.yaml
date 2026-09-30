@@ -1,0 +1,48 @@
+# Literature priors. ALL rows are PLACEHOLDER (D5). F1 is never stored (D4).
+# wallet_cio P/R taken from the source report listing; that report's F1=0.27 is inconsistent.
+# Other methods use 0/0 until a citation exists — not a claim of zero error.
+
+- method: wallet_cio
+  chain: btc
+  precision_val: 0.36
+  recall_val: 0.44
+  dataset_desc: PLACEHOLDER — source report listed P=0.36 and R=0.44; verify against original published evaluation
+  citation: PLACEHOLDER — original published evaluation not yet verified
+  verified: false
+  placeholder: true
+
+- method: infra_multi_signal
+  chain: null
+  precision_val: 0.0000
+  recall_val: 0.0000
+  dataset_desc: PLACEHOLDER — no literature P/R on file; zeros are not a measured rate
+  citation: PLACEHOLDER — no citation on file
+  verified: false
+  placeholder: true
+
+- method: stylometry
+  chain: null
+  precision_val: 0.0000
+  recall_val: 0.0000
+  dataset_desc: PLACEHOLDER — no literature P/R on file; zeros are not a measured rate
+  citation: PLACEHOLDER — no citation on file
+  verified: false
+  placeholder: true
+
+- method: handle_exact
+  chain: null
+  precision_val: 0.0000
+  recall_val: 0.0000
+  dataset_desc: PLACEHOLDER — no literature P/R on file; zeros are not a measured rate
+  citation: PLACEHOLDER — no citation on file
+  verified: false
+  placeholder: true
+
+- method: pgp_fingerprint
+  chain: null
+  precision_val: 0.0000
+  recall_val: 0.0000
+  dataset_desc: PLACEHOLDER — no literature P/R on file; zeros are not a measured rate
+  citation: PLACEHOLDER — no citation on file
+  verified: false
+  placeholder: true

@@ -1,0 +1,82 @@
+[
+  {
+    "id": "SRC-01",
+    "name": "Forum Alpha",
+    "reliability": "A",
+    "cadence": "6h",
+    "status": "ok",
+    "last_scan": "2026-09-30T12:10:00Z",
+    "hash_chain": "verified",
+    "url_public": "https://forum-alpha.example/public"
+  },
+  {
+    "id": "SRC-02",
+    "name": "Market Mirror",
+    "reliability": "B",
+    "cadence": "12h",
+    "status": "ok",
+    "last_scan": "2026-09-30T06:40:00Z",
+    "hash_chain": "verified",
+    "url_public": "https://market-mirror.example/public"
+  },
+  {
+    "id": "SRC-03",
+    "name": "Paste Watch",
+    "reliability": "C",
+    "cadence": "1h",
+    "status": "ok",
+    "last_scan": "2026-09-30T13:55:00Z",
+    "hash_chain": "verified",
+    "url_public": "https://paste-watch.example/public"
+  },
+  {
+    "id": "SRC-04",
+    "name": "Onion Index",
+    "reliability": "B",
+    "cadence": "24h",
+    "status": "ok",
+    "last_scan": "2026-09-29T22:00:00Z",
+    "hash_chain": "verified",
+    "url_public": "https://onion-index.example/public"
+  },
+  {
+    "id": "SRC-05",
+    "name": "Relay Logs",
+    "reliability": "D",
+    "cadence": "24h",
+    "status": "unreachable",
+    "last_scan": "2026-09-21T03:12:00Z",
+    "hash_chain": "pending",
+    "url_public": "https://relay-logs.example/public"
+  },
+  {
+    "id": "SRC-06",
+    "name": "Chain Fixture",
+    "reliability": "A",
+    "cadence": "manual",
+    "status": "ok",
+    "last_scan": "2026-09-30T09:00:00Z",
+    "hash_chain": "verified",
+    "url_public": "fixture://chain"
+  },
+  {
+    "id": "SRC-07",
+    "name": "Style Corpus",
+    "reliability": "B",
+    "cadence": "weekly",
+    "status": "ok",
+    "last_scan": "2026-09-28T16:20:00Z",
+    "hash_chain": "verified",
+    "url_public": "https://style-corpus.example/public"
+  },
+  {
+    "id": "SRC-08",
+    "name": "Leak Board",
+    "reliability": "C",
+    "cadence": "12h",
+    "status": "degraded",
+    "last_scan": "2026-09-29T11:33:00Z",
+    "hash_chain": "verified",
+    "url_public": "https://leak-board.example/public"
+  }
+]

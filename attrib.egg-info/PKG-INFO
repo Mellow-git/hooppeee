@@ -1,0 +1,99 @@
+Metadata-Version: 2.4
+Name: attrib
+Version: 0.1.0
+Summary: Passive public-data correlation for investigative leads
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: fastapi>=0.115.0
+Requires-Dist: uvicorn[standard]>=0.32.0
+Requires-Dist: pydantic>=2.9.0
+Requires-Dist: pydantic-settings>=2.6.0
+Requires-Dist: sqlalchemy>=2.0.36
+Requires-Dist: alembic>=1.14.0
+Requires-Dist: psycopg[binary]>=3.2.0
+Requires-Dist: neo4j>=5.26.0
+Requires-Dist: httpx[socks]>=0.27.0
+Requires-Dist: beautifulsoup4>=4.12.0
+Requires-Dist: lxml>=5.3.0
+Requires-Dist: networkx>=3.4.0
+Requires-Dist: scikit-learn>=1.5.0
+Requires-Dist: numpy>=2.1.0
+Requires-Dist: pandas>=2.2.0
+Requires-Dist: jinja2>=3.1.0
+Requires-Dist: minio>=7.2.0
+Requires-Dist: pycryptodome>=3.21.0
+Requires-Dist: confusable-homoglyphs>=3.3.0
+Requires-Dist: apscheduler>=3.10.4
+Requires-Dist: slowapi>=0.1.9
+Requires-Dist: pyyaml>=6.0.2
+Provides-Extra: pdf
+Requires-Dist: weasyprint>=62.0; extra == "pdf"
+Provides-Extra: dev
+Requires-Dist: pytest>=8.3.0; extra == "dev"
+Requires-Dist: pytest-asyncio>=0.24.0; extra == "dev"
+Requires-Dist: httpx>=0.27.0; extra == "dev"
+Requires-Dist: hypothesis>=6.115.0; extra == "dev"
+Requires-Dist: ruff>=0.8.0; extra == "dev"
+Requires-Dist: mypy>=1.13.0; extra == "dev"
+Requires-Dist: types-PyYAML>=6.0.12; extra == "dev"
+
+# attrib
+
+Passive correlation of **public** data into investigative leads for lawful authorities. This is not a scanning, exploitation, or identity-proof tool.
+
+Every API response, export, and UI view includes:
+
+> Investigative lead only. Not proof of identity. Confidence bands summarise the strongest supporting evidence tier; they are not probabilities.
+
+## Rules of engagement
+
+**Allowed:** GET of watchlisted public pages; query third-party scan databases through a provider interface; read public chain data; analyse already-collected public text.
+
+**Forbidden (not implemented):** probing hosts beyond that GET; attacks on Tor; logging in or evading anti-bot; malware or exploits.
+
+## Modes
+
+- **MOCK** (default): offline against `fixtures/` and the mock-market container. No internet required.
+- **LIVE**: `ENABLE_LIVE=1`, a watchlist file, and Compose profile `live`. Logs a warning at startup. Fetches use `socks5h://` so DNS stays inside Tor.
+
+## Setup
+
+```bash
+cp .env.example .env
+python -m venv .venv
+.venv/bin/pip install -e ".[dev]"   # Windows: .venv\Scripts\pip install -e ".[dev]"
+make check
+make test
+make up          # docker compose up --wait --build
+```
+
+Dashboard: http://localhost:5173  
+API health: http://localhost:8000/health
+
+## Makefile
+
+| Target | Purpose |
+| up | Compose with health wait |
+| down | Compose down |
+| seed | Regenerate fixtures (Phase 8 generator; Phase 0 raises NotImplementedError) |
+| test | pytest |
+| check | ruff + mypy --strict on `attrib/` |
+| validate | validation harness (Phase 8) |
+| e2e | pytest tests/e2e |
+| demo | bring stack up for the scripted scenario (Phase 8) |
+
+## Phases
+
+0 scaffold (this tree) → 1 storage/collector → 2 extract → 3 infra → 4 identity → 5 persona → 6 ledger/API/export → 7 dashboard → 8 validation/demo.
+
+Unimplemented behaviour raises `NotImplementedError` (HTTP 501 on the API).
+
+## Validation
+
+`make validate` / `python -m attrib.cli validate --seed N` builds a synthetic world and writes `reports/validation.md`. Literature priors stay labelled PLACEHOLDER until verified; see `docs/TODO_VERIFY.md`.
+
+## Docs
+
+- `docs/DECISIONS.md` — decision log (brief Section 2)
+- `docs/ARCHITECTURE.md` — components and data flow
+- `docs/TODO_VERIFY.md` — every placeholder awaiting a source

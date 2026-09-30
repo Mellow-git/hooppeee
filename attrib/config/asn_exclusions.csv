@@ -1,0 +1,8 @@
+asn,cidr,reason
+13335,,cdn_cloudflare
+16509,,cdn_amazon
+15169,,cdn_google
+20940,,cdn_akamai
+16625,,cdn_akamai
+54113,,cdn_fastly
+13367,,shared_hosting_placeholder
